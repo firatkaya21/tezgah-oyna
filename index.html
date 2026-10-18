@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#10141c" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="description" content="TEZGÂH — Tezgâhtan Devlete: bir pazar tezgâhından başlayıp şehirler, şirketler ve bir ülke kuran ekonomi ve şehir kurma oyunu." />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" href="./icon-192.png" />
+  <link rel="apple-touch-icon" href="./icon-192.png" />
+  <title>TEZGÂH — Tezgâhtan Devlete</title>
+  <script type="module" crossorigin src="./assets/index-CGoHaWE7.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-PU7bll_I.css">
+</head>
+<body>
+  <canvas id="game"></canvas>
+
+  <div id="hud" class="hidden">
+    <div id="top">
+      <div class="brand">TEZGÂH</div>
+      <button class="stat rank" id="rankChip"><span class="ic" id="rankIc">🧺</span><b id="rankName"></b></button>
+      <div class="stat money"><span class="ic">💰</span><b id="money">0</b><small id="moneyDelta"></small></div>
+      <div class="stat"><span class="ic">👥</span><b id="pop">0</b></div>
+      <div class="stat"><span class="ic" id="happyIc">😊</span><b id="happy">0%</b></div>
+      <div class="stat rci" id="rci" title="">
+        <div class="rb r"><i id="rciR"></i><span>K</span></div><div class="rb c"><i id="rciC"></i><span>T</span></div>
+        <div class="rb i"><i id="rciI"></i><span>S</span></div><div class="rb o"><i id="rciO"></i><span>O</span></div>
+      </div>
+      <div class="stat level"><span class="ic">⭐</span><b id="level">1</b><div class="bar xp"><i id="xpBar"></i></div></div>
+      <div class="stat clock"><span class="ic" id="sunIc">☀️</span><b id="clock">06:00</b><small id="day"></small></div>
+      <div class="stat wx" id="wxChip" title=""><span class="ic" id="wxIc">🌸☀️</span><b id="wxT">16°</b></div>
+      <div class="speed" id="speed">
+        <button data-s="0">⏸</button><button data-s="1" class="on">▶</button><button data-s="2">⏩</button><button data-s="3">⏭</button>
+      </div>
+      <div class="spacer"></div>
+      <button class="tb" id="btnCity">🏛️</button>
+      <button class="tb" id="btnPol">🗳️</button>
+      <button class="tb" id="btnTech">🔬</button>
+      <button class="tb" id="btnTransit">🚌</button>
+      <button class="tb" id="btnLayers">🔍</button>
+      <button class="tb" id="btnRegion">🗺️</button>
+      <button class="tb" id="btnCountry">🌍</button>
+      <button class="tb" id="btnCorp">📈</button>
+      <button class="tb" id="btnInv">📦</button>
+      <button class="tb" id="btnFin">📊</button>
+      <button class="tb" id="btnFriends">👥</button>
+      <button class="tb" id="btnFeed">💬</button>
+      <button class="tb" id="btnPaper">📰</button>
+      <button class="tb" id="btnEsnaf">🧺</button>
+      <button class="tb" id="btnShadow">🕶️</button>
+      <button class="tb" id="btnDynasty">👑</button>
+      <button class="tb" id="btnChallenge">🏁</button>
+      <button class="tb" id="btnPhoto">📸</button>
+      <button class="tb" id="btnWorld">🗺️</button>
+      <button class="tb hidden" id="btnHist">📜</button>
+      <button class="tb" id="btnAch">🏆</button>
+      <button class="tb" id="btnMute">🔊</button>
+      <button class="tb" id="btnSettings">⚙️</button>
+      <button class="tb" id="btnSave">💾</button>
+      <button class="tb" id="btnMore">⋯</button>
+      <button class="tb" id="btnMenu">☰</button>
+    </div>
+
+    <div id="goal"></div>
+    <div id="eraBox" class="hidden"></div>
+    <div id="needs"></div>
+    <div id="events"></div>
+    <div id="layers" class="hidden"></div>
+
+    <div id="build">
+      <div id="roadbar" class="hidden"></div>
+      <div id="linebar" class="hidden"></div>
+      <div id="cats"></div>
+      <div id="items"></div>
+    </div>
+    <div id="tip" class="hidden"></div>
+
+    <div id="info" class="hidden"></div>
+    <div id="tut" class="hidden"></div>
+    <div id="moreGrid" class="hidden"></div>
+    <button id="toolCancel" class="hidden">✕</button>
+    <div id="feed" class="hidden"></div>
+    <div id="decision" class="hidden"></div>
+    <div id="chChip" class="hidden"></div>
+    <div id="visitBar" class="hidden"></div>
+    <canvas id="minimap" width="192" height="192"></canvas>
+    <div id="help"></div>
+  </div>
+
+  <div id="photoBar" class="hidden"></div>
+  <div id="histCard" class="hidden"></div>
+  <div id="worldView" class="hidden"></div>
+  <div id="toasts"></div>
+  <div id="modal" class="hidden"><div class="box"><button class="x" id="modalX">✕</button><div id="modalBody"></div></div></div>
+
+  <div id="menu">
+    <div class="menu-box">
+      <div class="logo">TEZGÂH</div>
+      <div class="sub" id="menuSub"></div>
+      <div class="btns">
+        <button id="mContinue" class="big"></button>
+        <button id="mHist" class="big"></button>
+        <div class="diff"><label id="mDiffLbl"></label><select id="mDiff"></select><small id="mDiffHint"></small></div>
+        <button id="mNew" class="big"></button>
+        <button id="mLang"></button>
+        <button id="mSettings"></button>
+        <button id="mChallenge"></button>
+        <button id="mWorld"></button>
+      </div>
+      <div class="tip" id="menuTip"></div>
+      <div class="ver" id="menuVer">v0.23 · erken sürüm</div>
+    </div>
+  </div>
+
+</body>
+</html>
